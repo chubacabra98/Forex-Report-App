@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <title>Forex Report</title>
+    <!-- Icon -->
+    <link
+      rel="icon"
+      href="img/currency-exchange.png"
+      type="image/x-icon"
+    />
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.11.2/css/all.css"
+    />
+    <!-- Google Fonts Roboto -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap"
+    />
+    <!-- MDB UI KIT -->
+    <link rel="stylesheet" href="css/mdb.min.css" />
+    <!-- Custom styles -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+    <style>
+        .wrapper {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  grid-auto-rows: minmax(100px, auto);
+}
+.table-warpper {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  grid-auto-rows: minmax(100px, auto);
+}
+        .card {
+  /* Add shadows to create the "card" effect */
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  border-radius: 5px;
+  width: 200px;
+  padding-left: 10px;
+  margin-left: 130PX;
+  background-image: linear-gradient(to bottom right,yellow, red);
+}
+
+/* On mouse-over, add a deeper shadow */
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+.card2 {
+  /* Add shadows to create the "card" effect */
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  border-radius: 5px;
+  width: 200px;
+  padding-left: 10px;
+  margin-left: 80px;
+  background-image: linear-gradient(to bottom right,yellow, red);
+}
+
+/* On mouse-over, add a deeper shadow */
+.card2:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+h4,p{
+  color: black;
+}
+.card3 {
+  /* Add shadows to create the "card" effect */
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  border-radius: 5px;
+  width: 200px;
+  padding-left: 10px;
+  margin-left: 80px;
+  background-image: linear-gradient(to bottom right,yellow, red);
+}
+.card:hover {
+  box-shadow: 2px 12px 15px black;
+}
+.card.with-transform:hover {
+  transform: translateY(-2px);
+}
+.card2:hover {
+  box-shadow: 2px 12px 15px black;
+}
+.card2.with-transform:hover {
+  transform: translateY(-2px);
+}
+.card3:hover {
+  box-shadow: 2px 12px 15px black;
+}
+.card3.with-transform:hover {
+  transform: translateY(-2px);
+}
+/* Add some padding inside the card container */
+.container {
+  padding: 10px 2px;
+    margin-top: 58px;
+  
+}
+
+.row {
+  margin-left:10px;
+  margin-right:-5px;
+  margin-top: 51PX;
+}
+  
+.column1 {
+  float: left;
+  width: 20%;
+  padding: 3px;
+  margin-top: auto;
+  margin-left:10%;
+}
+.column2 {
+  float: left;
+  width: 20%;
+  padding: 3px;
+  margin-top: auto;
+  margin-left:10%;
+}
+.column3 {
+  float: left;
+  width: 20%;
+  padding: 3px;
+  margin-top: auto;
+  margin-left:13%;
+}
+
+/* Clearfix (clear floats) */
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+table {
+	width: 100%;
+	border-collapse: collapse;
+	overflow: hidden;
+	box-shadow: 2px 12px 15px orange;
+  border-radius: 42px;
+}
+th, td {
+  text-align: left;
+  padding: 16px;
+  
+}
+td{
+  border-radius: 5px;
+}
+td:hover{
+  color: RED;
+  box-shadow: 2px 12px 15px orange;
+}
+td.with-transform:hover {
+  transform: translateY(-2px);
+}
+body {
+	margin: 0;
+	background: linear-gradient(45deg, white);
+	font-family: sans-serif;
+	font-weight: 100;
+}
+.topnav {
+  overflow: hidden;
+    background: linear-gradient(45deg, white, orange);
+    margin-bottom: 51px;
+    margin-top: -60px;
+}
+user-select-none svg-container{
+  margin-left: 10px;
+}
+
+.topnav a {
+  float: left;
+  display: block;
+  color: black;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.topnav a:hover {
+  background: linear-gradient(45deg, yellow, orange);
+  color: black;
+}
+
+.topnav a.active {
+  background: linear-gradient(45deg, yellow, orange);
+  color: black;
+}
+
+.topnav input[type=text] {
+  float: right;
+  padding: 6px;
+  margin-top: 8px;
+  margin-right: 16px;
+  border: black;
+  background: linear-gradient(45deg, yellow, orange);
+  font-size: 15px;
+  border-radius: 8px;
+}
+.btn-group .button {
+  background: linear-gradient(45deg, yellow, orange);
+  border: black;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+  border: 1px solid grey;
+  border-radius: 5px 5px 5px 5px;
+}
+
+.btn-group .button:hover {
+  background-color: #3e8e41;
+}
+
+@media screen and (max-width: 600px) {
+  .topnav a, .topnav input[type=text] {
+    float: none;
+    display: block;
+    text-align: left;
+    width: 100%;
+    margin: 0;
+    padding: 14px;
+  }
+  
+  .topnav input[type=text] {
+    border: 1px solid black;  
+  }
+}
+    </style>
+  </head>
+  <script>
+    function drawChart() {
+// Set Data
+var data = google.visualization.arrayToDataTable([
+  ['Price', 'Size'],
+  [50,7],[60,8],[70,8],[80,9],[90,9],[100,9],
+  [110,10],[120,11],[130,14],[140,14],[150,15]
+  ]);
+// Set Options
+var options = {
+  title: 'House Prices vs Size',
+  hAxis: {title: 'Square Meters'},
+  vAxis: {title: 'Price in Millions'},
+  legend: 'none'
+};
+// Draw Chart
+var chart = new google.visualization.LineChart(document.getElementById('myChart'));
+chart.draw(data, options);
+}
+  </script>
+    
+  <body>
+    <!--Main Navigation-->
+    <header class="mb-10">
+      <!-- Navbar-->
+      <nav
+        class="navbar navbar-expand-lg navbar-light bg-white shadow-2 fixed-top"
+      >
+        <div
+          class="
+            container-fluid
+            justify-content-center justify-content-md-between
+          "
+        >
+          <!-- Left elements -->
+          <ul class="navbar-nav flex-row align-items-center">
+            <li class="nav-item me-3 me-lg-1">
+              <a
+                class="nav-link d-flex"
+                href="https://www.jiomart.com/"
+                target="_blank"
+              >
+                <img
+                  src="img/Jiomart.jpeg"
+                  height="30"
+                  alt=""
+                  loading="lazy"
+                  class="me-2"
+                />
+                <span
+                  style="
+                    font-size: 19px;
+                    font-weight: 500;
+                    color: hsl(0, 0%, 30%);
+                  "
+                  >PBG FOREX<span class="text-theme"> REPORT</span></span
+                >
+              </a>
+            </li>
+            <li class="nav-item me-3 me-lg-1">
+              <a
+                class="nav-link"
+                href="https://docs.google.com/spreadsheets/d/1fDqVuroB2hUqG54MQVvF2cBxhPtrMP8j1W0uPE8yduQ/edit#gid=0"
+                rel="nofollow"
+                target="_blank"
+              >
+              <img
+              src="img/exchange.png"
+              height="31"
+              alt=""
+              loading="lazy"
+              class="me-2"
+            />
+              </a>
+            </li>
+          </ul>
+          <!-- Left elements -->
+
+          <!-- Center elements -->
+          <ul class="navbar-nav flex-row d-none d-md-flex">
+            <li class="nav-item me-3 me-lg-1">
+              <a
+                class="nav-link d-flex"
+                href="https://www.google.com/search?q=USD+to+INr&rlz=1C5CHFA_enIN1017IN1017&sxsrf=ALiCzsa6Z5Nts7J7PAhzA2V1BIgcU1G3LA%3A1660050010293&ei=WlryYsW0EfnLseMPsZaZ0AI&ved=0ahUKEwjFybCZ6Ln5AhX5ZWwGHTFLBioQ4dUDCA4&uact=5&oq=USD+to+INr&gs_lcp=Cgdnd3Mtd2l6EAMyEAgAEIAEELEDEIMBEEYQggIyBAgAEEMyBQgAEJECMgUIABCABDIICAAQgAQQsQMyBQgAEIAEMgUIABCABDIFCAAQgAQyBQgAEIAEMgUIABCABDoHCCMQsAMQJzoHCAAQRxCwAzoHCAAQsAMQQzoECCMQJzoLCAAQgAQQsQMQgwE6EQguEIAEELEDEIMBEMcBENEDOgoIABCxAxCDARBDOgkIABBDEEYQggJKBQg8EgEySgQIQRgASgQIRhgAUKQHWPkcYNMeaAJwAXgAgAG8AYgBiAySAQQwLjEwmAEAoAEByAEKwAEB&sclient=gws-wiz"
+                target="_blank"
+              >
+                <img
+                  src="img/currency-exchange.png"
+                  height="22"
+                  class="me-2"
+                  alt=""
+                />
+                <span>Live Conversion Rates</span>
+              </a>
+            </li>
+          </ul>
+          <!-- Center elements -->
+
+          <!-- Right elements -->
+          <ul class="navbar-nav flex-row d-none d-md-flex">
+            <li class="nav-item me-3 me-lg-1">
+              <a
+                href="https://docs.google.com/spreadsheets/d/1fDqVuroB2hUqG54MQVvF2cBxhPtrMP8j1W0uPE8yduQ/export?format=xlsx"
+                target="_blank"
+                class="
+                  btn btn-primary btn-rounded
+                  mx-2
+                  d-none d-lg-inline-block
+                "
+                ><i class="fas fa-cubes me-2"></i>Download Data</a
+              >
+            </li>
+          </ul>
+          <!-- Right elements -->
+        </div>
+      </nav>
+      <!-- Navbar -->
+    </header>
+    <div class="wrapper">
+    <div class="card">
+        <div class="rate" id="rate"></div>
+        <div class="container">
+          <div class="usdinr">
+            <h1>---</h1>
+          </div>
+          <h4><b>USD/INR</b></h4>
+          <p>Base: US Dollar</p>
+        </div>
+      </div>
+      <div class="card2">
+        <div class="container">
+          <div class="cnyinr">
+            <h1>---</h1>
+          </div>
+          <h4><b>CNY/INR</b></h4>
+          <p>Base: Chinese Yuan</p>
+        </div>
+      </div>
+      <div class="card3">
+        <div class="container">
+          <div class="usdcny">
+            <h1>---</h1>
+          </div>
+          <h4><b>USD/CNY</b></h4>
+          <p>Base: US Dollar</p>
+        </div>
+      </div>
+      </div>
+      <div class="row"> 
+        <div class="column1">
+          <table>
+            <thead class="table-dark">
+            <th>Start Date</th>
+            <th>close value</th>
+            </thead>
+            <tr>
+              <td>11-08-2022</td>
+              <td>11.232</td>
+            </tr>
+            <tr>
+              <td>10-08-2022</td>
+              <td>11.032</td>
+            </tr>
+            <tr>
+              <td>09-08-2022</td>
+              <td>11.132</td>
+            </tr>
+            <tr>
+              <td>08-08-2022</td>
+              <td>11.11</td>
+            </tr>
+            <tr>
+              <td>07-08-2022</td>
+              <td>11.232</td>
+            </tr>
+            <tr>
+              <td>06-08-2022</td>
+              <td>11.32</td>
+            </tr>
+            <tr>
+              <td>05-08-2022</td>
+              <td>11.98</td>
+            </tr>
+          </table>
+          </div>
+          <div class="column2">
+            <table>
+              <thead class="table-dark">
+              <th>Start Date</th>
+              <th>close value</th>
+            </thead>
+              <tr>
+                <td>11-08-2022</td>
+                <td>11.232</td>
+              </tr>
+              <tr>
+                <td>10-08-2022</td>
+                <td>11.032</td>
+              </tr>
+              <tr>
+                <td>09-08-2022</td>
+                <td>11.132</td>
+              </tr>
+              <tr>
+                <td>08-08-2022</td>
+                <td>11.11</td>
+              </tr>
+              <tr>
+                <td>07-08-2022</td>
+                <td>11.232</td>
+              </tr>
+              <tr>
+                <td>06-08-2022</td>
+                <td>11.32</td>
+              </tr>
+              <tr>
+                <td>05-08-2022</td>
+                <td>11.98</td>
+              </tr>
+            </table>
+            </div>
+            <div class="column3">
+              <table>
+                <thead class="table-dark">
+                <th>Start Date</th>
+                <th>close value</th>
+                </thead>
+                <tr>
+                  <td>11-08-2022</td>
+                  <td>11.232</td>
+                </tr>
+                <tr>
+                  <td>10-08-2022</td>
+                  <td>11.032</td>
+                </tr>
+                <tr>
+                  <td>09-08-2022</td>
+                  <td>11.132</td>
+                </tr>
+                <tr>
+                  <td>08-08-2022</td>
+                  <td>11.11</td>
+                </tr>
+                <tr>
+                  <td>07-08-2022</td>
+                  <td>11.232</td>
+                </tr>
+                <tr>
+                  <td>06-08-2022</td>
+                  <td>11.32</td>
+                </tr>
+                <tr>
+                  <td>05-08-2022</td>
+                  <td>11.98</td>
+                </tr>
+              </table>
+              </div>
+              <div id="myChart" style="max-width:700px; height:400px"></div>
+      </div>
+      <script src="/js/script.js"></script>
+    <!--Main Navigation-->
+    <div class="plot" id="myPlot" style="width:100%;max-width:700px"></div>
+
+<script>
+var xArray = [50,60,70,80,90,100,110,120,130,140,150];
+var yArray = [7,8,8,9,9,9,10,11,14,14,15];
+
+// Define Data
+var data = [{
+  x: xArray,
+  y: yArray,
+  mode:"lines"
+}];
+
+// Define Layout
+var layout = {
+  xaxis: {range: [40, 160], title: "USD"},
+  yaxis: {range: [5, 16], title: "CNY"},  
+  title: "Live Conversion Rates"
+};
+
+// Display using Plotly
+Plotly.newPlot("myPlot", data, layout);
+</script>
+  </body>
+</html>

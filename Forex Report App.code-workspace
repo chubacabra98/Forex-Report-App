@@ -1,0 +1,11 @@
+{
+	"folders": [
+		{
+			"name": "Forex Report App",
+			"path": "."
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "Forex Report App"
+	}
+}
